@@ -1,9 +1,13 @@
 package tomi.tehtava1;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class DisplayShoppingList extends AppCompatActivity {
 
@@ -16,9 +20,20 @@ public class DisplayShoppingList extends AppCompatActivity {
 
         shoppingListView = (TextView) findViewById(R.id.shoppingListView);
 
-        shoppingListView.setText("tidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \n" +
-                "tidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \n" +
-                "tidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \ntidiii vittu asdasd juujuu \n");
+        Intent intent = getIntent();
+
+        ArrayList<String> shoppingList = intent.getStringArrayListExtra("ESL");
+        for(String item : shoppingList){
+            shoppingListView.append(item+"\n");
+        }
 
     }
+
+
+    public void backToMenu(View view){
+        Intent backIntent = new Intent(this, MainActivity.class);
+        startActivity(backIntent);
+    }
+
+
 }
